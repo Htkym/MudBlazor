@@ -20,7 +20,7 @@ jobs:
     name: Deploy web app to try.mudblazor.com
     needs: wait-for-nuget
     if: ${{ github.repository_owner == 'MudBlazor' }}
-    uses: MudBlazor/Workflows/.github/workflows/template-deploy-web-app.yml@main
+    uses: MudBlazor/Workflows/.github/workflows/template-deploy-web-app.yml@9d8a2f909533abbf628883c3c60a9229b0f2d5c8 # main at 2026-10-29
     with:
       checkout-repository: MudBlazor/TryMudBlazor
       checkout-ref: main

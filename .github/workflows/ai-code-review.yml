@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
 
@@ -72,7 +72,7 @@ jobs:
       - name: Generate app token
         id: app-token
         if: ${{ steps.pr.outputs.run }}
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@v3.3.0
         with:
           app-id: ${{ vars.MUDBOT_APP_ID }}
           private-key: ${{ secrets.MUDBOT_PRIVATE_KEY }}
@@ -80,7 +80,7 @@ jobs:
 
       - name: Post the review
         if: ${{ steps.pr.outputs.run }}
-        uses: actions/github-script@v9
+        uses: actions/github-script@v9.0.0
         env:
           REVIEW: ${{ steps.claude.outputs.review }}
         with:

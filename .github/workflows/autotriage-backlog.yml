@@ -30,15 +30,15 @@ jobs:
     steps:
       - name: Generate app token
         id: app-token
-        uses: actions/create-github-app-token@v3
+        uses: actions/create-github-app-token@v3.3.0
         with:
           app-id: ${{ vars.MUDBOT_APP_ID }}
           private-key: ${{ secrets.MUDBOT_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
 
       - name: Restore triage DB
-        uses: actions/cache/restore@v6
+        uses: actions/cache/restore@v6.1.0
         with:
           path: triage-db.json
           key: ${{ runner.os }}-triage-db-${{ github.run_id }}-${{ github.run_attempt }}
@@ -60,14 +60,14 @@ jobs:
       # The key includes the attempt, so a re-run can save too.
       - name: Save triage DB
         if: always() && hashFiles('triage-db.json') != ''
-        uses: actions/cache/save@v6
+        uses: actions/cache/save@v6.1.0
         with:
           path: triage-db.json
           key: ${{ runner.os }}-triage-db-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: triage-artifacts-${{ github.run_number }}
           path: |

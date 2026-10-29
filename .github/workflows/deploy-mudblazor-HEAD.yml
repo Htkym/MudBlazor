@@ -7,7 +7,7 @@ jobs:
   deploy-web-app:
     name: Deploy HEAD to web app to mudblazor.com
     if: ${{ github.repository_owner == 'MudBlazor' }}
-    uses: MudBlazor/Workflows/.github/workflows/template-deploy-web-app.yml@main
+    uses: MudBlazor/Workflows/.github/workflows/template-deploy-web-app.yml@9d8a2f909533abbf628883c3c60a9229b0f2d5c8 # main at 2026-10-29
     with:
       web-app-name: mudblazor
       web-app-slot-name:  'staging'

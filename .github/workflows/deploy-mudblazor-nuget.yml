@@ -27,16 +27,16 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
 
       - name: Cache NuGet packages
-        uses: actions/cache@v6
+        uses: actions/cache@v6.1.0
         with:
           key: ${{ github.repository }}-nuget-${{ hashFiles('**/*.csproj') }}
           path: ${{ env.NUGET_PACKAGES }}
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v6
+        uses: actions/setup-dotnet@v6.0.0
 
       - name: Restore dependencies
         working-directory: src/MudBlazor
@@ -55,7 +55,7 @@ jobs:
         run: ./tools/CheckPackageContainsStaticAssets.ps1 ./src/MudBlazor/nupkgs MudBlazor.min.js
 
       - name: NuGet login
-        uses: NuGet/login@v1
+        uses: NuGet/login@v1.2.0
         id: login
         with:
           user: MudBlazor
